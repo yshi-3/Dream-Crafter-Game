@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream-Crafter Games - Introduction</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="translate.js" defer></script>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Body Background */
+    body {
+        background-color: #f9f3ee;
+        color: #444;
+    }
+
+
+    /* Header Section */
+    .header {
+        position: relative;
+        background-image: url('tp3.jpg'); /* Replace with your JPG file */
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        color: #fff;
+    }
+
+    
+    .language-selection {
+        position: absolute;
+        top: 100.5vh;
+        right: 3px;
+        font-size: 1.1em;
+    }
+
+    .language-selection select {
+        padding: 5px;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: right;
+        align-items: right;
+        }
+
+        /* Logo Styles */
+        .logo {
+            width: 150px; /* Set the logo size (adjust as needed) */
+            height: 150px; /* Ensure it’s a perfect circle */
+            border-radius: 50%; /* Make the logo circular */
+            object-fit: cover; /* Ensure the logo image maintains its aspect ratio */
+            border: 5px solid #f57c00; /* Optional: Add border around the logo for extra styling */
+        }
+
+
+    .header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .directory-bar {
+        position: absolute;
+        top: 20px; /* Adjust positioning */
+        right: 20px; /* Adjust positioning */
+        width: 50px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+
+    .directory-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #f3b035;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .directory-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background-color: #eae6e3;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        width: 100%;
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: all 0.3s ease;
+    }
+
+    .directory-list li {
+        padding: 10px;
+        border-bottom: 1px solid #555;
+    }
+
+    .directory-list li:last-child {
+        border-bottom: none;
+    }
+
+    .directory-list a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+    }
+
+    .directory-list a:hover {
+        color: #ddd;
+    }
+
+    .directory-bar:hover .directory-list {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
+    .directory-bar:hover {
+        height: auto;
+        width: 150px;
+        background-color: #444;
+        border-radius: 10px;
+    }
+        
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
+
+    .header-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-content h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .header-content p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        background-color: #f3b035;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1rem;
+    }
+
+    .btn:hover {
+        background-color: #ffc3a0;
+    }
+
+    .section {
+        padding: 60px; 
+        text-align: center;
+        align-items: center;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+
+    .section p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .group {
+        background-color: #eae6e3; /* Off-white with pink hint */
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .group-images {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 100px;
+    }
+
+    .group-member {
+        position: relative; /* Required for absolute positioning of the description */
+        width: 300px; /* Adjust as needed */
+        height: auto;
+        overflow: hidden; /* Ensures the description stays within the image boundaries */
+        border-radius: 50%px;
+        transition: transform 0.3s ease;
+    }
+
+    .group-member img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+
+    .group-member:hover img {
+        transform: scale(1.05);
+    }
+
+    .member-description {
+        opacity: 0; /* Hidden by default */
+        transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(72, 72, 72, 0.7); /* Semi-transparent background */
+        color: #ffffff;
+        font-size: 11px;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        z-index: 10;
+    }
+
+    .group-member:hover .member-description {
+        opacity: 1; /* Show the description on hover */
+    }
+
+    .group-member p {
+        margin-top: 10px;
+        font-size: 1.2em;
+    }
+
+
+    .roles-container {
+        background-color: #eae6e3;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .role {
+        background-color: #fff;
+        border-radius: 8px;
+        margin: 10px 0;
+        max-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .role:hover {
+        transform: translateY(-5px);
+    }
+
+    .role h3 {
+        color: #163645;
+        font-size: 1.5em;
+    }
+
+    .role p {
+        font-size: 1em;
+        color: #163645;
+    }
+
+    .social-links {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+
+        .social-links li {
+            margin-bottom: 10px;
+        }
+
+        .social-links a {
+            color: #306692;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+
+    footer {
+        background-color: #486876;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    footer p {
+        font-size: 1em;
+    }
+
+    @media (max-width: 768px) {
+        .group-images {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .group-member {
+            width: 80%;
+        }
+
+        .role {
+            margin: 20px 0;
+        }
+
+         .team-container {
+            flex-direction: column; /* Stack items vertically on smaller screens */
+        }
+}
+</style>
+
+<body>
+
+    <div class="language-selection">
+        <label for="language-select">Select Language: </label>
+        <select id="language-select" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+        </select>
+    </div>
+    
+
+
+        <header class="header">
+            <div class="header-overlay">
+                <nav class="navbar">
+                    <div class="logo-container">
+                        <img src="tp4.jpg" alt="Logo" class="logo">
+                    </div>
+                </nav>
+                <div class="header-content">
+                    <h1 id="mission-title">Welcome to the world of Dream-Crafter Games</h1>
+                    <div class="header-description" id="header-description">
+                        <p>Unleash the Fun, Ignite the Interest, Games for kids, Love for world--From Little Games to Big Dreams</p>
+                    </div>
+                        <a href="#mission" class="btn">Explore Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="directory-bar" onmouseover="expandDirectory()" onmouseout="collapseDirectory()">
+                <div class="directory-circle">
+                    <span>&#9776;</span>
+                </div>
+                <ul class="directory-list">
+                    <li><a href="Game page1.html">Intro<br>介绍</a></li>
+                    <li><a href="Puzzle game.html">Puzzle Game<br>益智游戏</a></li>
+                    <li><a href="Treasure game.html">Teasure Hunt Game<br>寻宝游戏</a></li>
+                    <li><a href="Racing game.html">Racing Game<br>竞速游戏</a></li>
+                    <li><a href="Casual game.html">Casual Game<br>休闲游戏</a></li>
+                </ul>
+            </div>
+        </div>
+        </header>
+    </label>
+
+        <section id="mission" class="section">
+            <h2 id="mission-title">Our Mission</h2>
+                <div class="mission-description" id="mission-description">
+                    <p>Our mission is to inspire children's passion for gaming and programming by creating fun, engaging, and healthy gaming experiences. We eliminate addictive games but striving to design innovative games that not only entertain, but also educate and cultivate a greater interest in STEM, art, and even simply play. Recognizing the importance of inclusivity, we are committed to developing specialized games for children with disabilities, giving them the opportunity to embark on a fun gaming world.</p>
+                </div>
+                </div>
+                
+        </section>
+
+        <section class="group">
+            <div class="container">
+                <h2 id="group-title">Meet Our Team</h2>
+                <div class="group-images">
+                    <div class="group-member">
+                        <img src="tp1.jpg" alt="Member 1">
+                        <div class="member-description" id="member-description">
+                            <p>Abigail has been passionate about computer science since high school, especially with a strong interest in website development and networking. She loves children very much and often participates in community activities to help them, which also opens up her desire to help children's growth by designing healthy and meaningful games. She takes on the responsibility of being the team leader within the group, serving as the mastermind and creator of the entire project, providing innovative ideas and exceptional execution power to the team.</p>
+                        </div>
+                        <p id="member-name">Abigail Shi</p>
+                    </div>
+                    <div class="group-member">
+                        <img src="tp2.jpg" alt="Member 2">
+                        <div class="member-description" id="member-description">
+                            <p>In the past four years, Ben has accumulated rich programming experience. He also feels a strong burden for children with physical disabilities and understands that these children face significant challenges: limited physical accessibility often prevents them from fully enjoying games and lacking learning resources. This motivates him to become the founder and technical director of this project, using his strengths to design games and mathematics to create innovative, educational, and easy to understand games.</p>
+                        </div>
+                        <p id="member2-name">Ben Xu</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="goal" class="section">
+            <h2 id="goal-title">Our Goal</h2>
+            <div class="goal-description" id="goal-description">
+                <p>Our goal is to ensure that every child, regardless of their abilities, can explore, learn, and grow through the power of playing games.</p>
+            </div>
+        </section>
+
+        <section id="roles" class="section">
+            <h2 id="roles-title">Our Roles</h2>
+            <div class="roles-container">
+                <div class="role">
+                            <h3 id="game-designer-title">Game Designer</h3>
+                            <p id="game-designer-description">Responsible for designing the core gameplay mechanics and ensuring the player's experience is engaging and fun.</p>
+                        </div>
+                        <div class="role">
+                            <h3 id="developer-title">Developer</h3>
+                            <p id="developer-description">Focuses on coding, building the game's functionality, and ensuring a smooth and bug-free experience.</p>
+                        </div>
+                        <div class="role">
+                            <h3 id="artist-title">Artist</h3>
+                            <p id="artist-description">Creates the visual assets, such as character designs, backgrounds, and animations to bring the game to life.</p>
+                        </div>
+                        <div class="role">
+                            <h3 id="producer-title">Producer</h3>
+                            <p id="producer-description">Oversees the development process, making sure that the project stays on track, within scope, and on time.</p>
+                        </div>
+                    </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact</h2>
+                <ul class="social-links">
+                    <li><a href="mailto:dream_crafter_game@outlook.com">Email</a></li>
+                    <li><a href="https://www.instagram.com/abigailshi074_/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.xiaohongshu.com/user/" target="_blank" rel="noopener noreferrer">小红书</a></li>
+                </ul>
+            </div>
+        </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dream Crafter Games team. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
