@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream-Crafter Games - Introduction</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="PuzzleTranslate.js" defer></script>
+</head>
+
+    <style>
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f9f3ee;
+            color: #444;
+        }
+
+
+        .header {
+            position: relative;
+            background-image: url('tp2.png'); /* Replace with your JPG file */
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            color: #fff;
+        }
+
+        
+        .language-selection {
+            position: absolute;
+            top: 70.5vh;
+            right: 3px;
+            font-size: 1.1em;
+        }
+
+        .language-selection select {
+            padding: 3px;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .directory-bar {
+            position: absolute;
+            top: 20px; /* Adjust positioning */
+            right: 20px; /* Adjust positioning */
+            width: 50px;
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+
+        .directory-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #f3b035;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .directory-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            background-color: #eae6e3;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            width: 100%;
+            opacity: 0;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: all 0.3s ease;
+        }
+
+        .directory-list li {
+            padding: 10px;
+            border-bottom: 1px solid #555;
+        }
+
+        .directory-list li:last-child {
+            border-bottom: none;
+        }
+
+        .directory-list a {
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+
+        .directory-list a:hover {
+            color: #ddd;
+        }
+
+        .directory-bar:hover .directory-list {
+            opacity: 1;
+            transform: scaleY(1);
+        }
+
+        .directory-bar:hover {
+            height: auto;
+            width: 150px;
+            background-color: #444;
+            border-radius: 10px;
+        }
+            
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .header-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+        }
+
+        .header-content p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            padding: 60px; 
+            text-align: center;
+            align-items: center;
+        }
+
+
+        /* Game Grid */
+        .game-container {
+            background-color: #eae6e3;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+
+        .game {
+            background-color: #fff;
+            border-radius: 8px;
+            margin: 40px 0;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .game-item {
+            position: relative; /* Ensure positioning for hover effect */
+        }
+
+        .game-image {
+            position: relative; /* Required for absolute positioning of the description */
+            display: flex;
+            width: 100%;
+            height: 180px;
+            border: 1px solid #eae6e3;
+            border-radius: 4px;
+            overflow: hidden; /* Ensures the description stays within the image boundaries */
+        }
+
+        .game-description {
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 4px;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center text vertically and horizontally */
+        }
+
+        .game-image:hover .game-description {
+            opacity: 1; /* Show the description on hover */
+        }
+
+
+        .game-link {
+            display: block;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #f3b035;
+            text-decoration: none;
+        }
+
+        .game-link:hover {
+            text-decoration: underline;
+        }
+
+        .game:hover {
+            transform: translateY(-5px);
+        }
+
+        .game h3 {
+            color: #163645;
+            font-size: 1.5em;
+            padding: 5px;
+        }
+
+        .game p {
+            font-size: 1.5em;
+            color: #163645;
+            padding: 5px;
+        }
+
+        .social-links {
+                list-style-type: none;
+                margin-top: 20px;
+            }
+
+            .social-links li {
+                margin-bottom: 10px;
+            }
+
+            .social-links a {
+                color: #306692;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .social-links a:hover {
+                text-decoration: underline;
+            }
+
+
+        footer {
+            background-color: #486876;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="language-selection">
+        <label for="language-select">Select Language: </label>
+        <select id="language-select" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+        </select>
+    </div>
+    
+        <header class="header">
+            <div class="header-overlay">
+                <nav class="navbar">
+                <div class="header-content">
+                    <h1 id="header-title">Hi, welcome to the world of puzzle games </h1>
+                    <div class="header-description" id="header-description">
+                        <p>Unlock your wisdom and explore the joy of knowledge mysteries！</p>
+                </div>
+            </div>
+
+            <div class="directory-bar" onmouseover="expandDirectory()" onmouseout="collapseDirectory()">
+                <div class="directory-circle">
+                    <span>&#9776;</span>
+                </div>
+                <ul class="directory-list">
+                    <li><a href="Game page1.html">Intro<br>介绍</a></li>
+                    <li><a href="Puzzle game.html">Puzzle Game<br>益智游戏</a></li>
+                    <li><a href="Treasure game.html">Teasure Hunt Game<br>寻宝游戏</a></li>
+                    <li><a href="Racing game.html">Racing Game<br>竞速游戏</a></li>
+                    <li><a href="Casual game.html">Casual Game<br>休闲游戏</a></li>
+                </ul>
+            </div>
+        </div>
+        </header>
+    </label>
+
+    <section class="game-container">
+        <div class="game">
+            <div class="game-item">
+                <div class="game-image">
+                    <img src="tp5.jpg" alt="Game Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                    <div class="game-description">
+                        In this game, you are the driver with one mission: get home safely. Beware, the road is cursed! Stumps and oncoming cars will appear, and hitting them slows you down. Along the way, a math blessing awaits—answer questions correctly to reduce penalties or boost rewards. Now, take the wheel and explore!
+                    </div>
+                </div>
+                <h2>The Missing Car</h2>
+                <a href="https://makecode.com/_fH4H7CEdKPi9" class="game-link">Play Now</a>
+                <a href="https://makecode.com" class="game-link">现在开始</a>
+            </div>
+        </div>
+
+        
+        <div class="game">
+            <div class="game-item">
+                <div class="game-image">
+                    <img src="tp7.jpg" alt="Game Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                    <div class="game-description">
+                        Unable to unlock temporarily, please stay tuned
+                    </div>
+                </div>
+                <h2>Unable</h2>
+                <a href="" class="game-link">Play Now</a>
+                <a href="https://makecode.com" class="game-link">现在开始</a>
+            </div>
+        </div>
+
+    <div class="game">
+        <div class="game-item">
+            <div class="game-image">
+                <img src="tp7.jpg" alt="Game Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                <div class="game-description">
+                    Unable to unlock temporarily, please stay tuned
+                </div>
+            </div>
+            <h2>Unable</h2>
+            <a href="" class="game-link">Play Now</a>
+            <a href="https://makecode.com" class="game-link">现在开始</a>
+        </div>
+    </div>
+
+    <div class="game">
+        <div class="game-item">
+            <div class="game-image">
+                <img src="tp7.jpg" alt="Game Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                <div class="game-description">
+                    Unable to unlock temporarily, please stay tuned
+                </div>
+            </div>
+            <h2>Unable</h2>
+            <a href="" class="game-link">Play Now</a>
+            <a href="https://makecode.com" class="game-link">现在开始</a>
+        </div>
+    </div>
+
+    <div class="game">
+        <div class="game-item">
+            <div class="game-image">
+                <img src="tp7.jpg" alt="Game Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                <div class="game-description">
+                    Unable to unlock temporarily, please stay tuned
+                </div>
+            </div>
+            <h2>Unable</h2>
+            <a href="" class="game-link">Play Now</a>
+            <a href="https://makecode.com" class="game-link">现在开始</a>
+        </div>
+    </div>
+
+    <div class="game">
+        <div class="game-item">
+            <div class="game-image">
+                <img src="tp7.jpg" alt="Game Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+                <div class="game-description">
+                    Unable to unlock temporarily, please stay tuned
+                </div>
+            </div>
+            <h2>Unable</h2>
+            <a href="" class="game-link">Play Now</a>
+            <a href="https://makecode.com" class="game-link">现在开始</a>
+        </div>
+    </div>
+
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <ul class="social-links">
+                <li><a href="mailto:dream_crafter_game@outlook.com">Email</a></li>
+                <li><a href="https://www.instagram.com/abigailshi074_/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.xiaohongshu.com/user/" target="_blank" rel="noopener noreferrer">小红书</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dream Crafter Games team. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
