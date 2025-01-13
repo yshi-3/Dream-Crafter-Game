@@ -6,6 +6,7 @@
     <title>Dream-Crafter Games - Introduction</title>
     <link rel="stylesheet" href="styles.css">
     <script src="translate.js" defer></script>
+    <script src="description.js" defer></script>
 </head>
 
 <style>
@@ -91,34 +92,38 @@
         color: #fff;
     }
 
-    .directory-bar {
-        position: absolute;
-        top: 20px; /* Adjust positioning */
-        right: 20px; /* Adjust positioning */
-        width: 50px;
-        height: 50px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        z-index: 10;
-    }
+    /* Style for the directory bar */
+.directory-bar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px; /* Adjust width to fit text */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
 
-
+    /* Style for the button that shows the text */
     .directory-circle {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        width: 200px; /* Adjust to match text width */
+        height: 40px;
         background-color: #f3b035;
         color: white;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 24px;
+        font-size: 16px;
         cursor: pointer;
+        border-radius: 10px;
+        text-align: center;
+        padding: 10px;
+        position: relative;
     }
 
+    /* Style for the hidden directory list */
     .directory-list {
         margin: 0;
         padding: 0;
@@ -127,42 +132,52 @@
         color: rgb(0, 0, 0);
         text-align: center;
         width: 100%;
-        opacity: 0;
-        transform: scaleY(0);
+        opacity: 0;  /* Initially hidden */
+        transform: scaleY(0); /* Initially collapsed */
         transform-origin: top;
         transition: all 0.3s ease;
+        position: absolute;
+        top: 60px; /* Place below the button */
+        left: 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
+    /* Style for individual list items */
     .directory-list li {
         padding: 10px;
         border-bottom: 1px solid #555;
     }
 
+    /* Style for the last list item to remove border */
     .directory-list li:last-child {
         border-bottom: none;
     }
 
+    /* Style for links */
     .directory-list a {
         text-decoration: none;
         color: rgb(0, 0, 0);
+        display: block;
+        width: 100%;
     }
 
+    /* Hover effect for links */
     .directory-list a:hover {
         color: #ddd;
     }
 
+    /* Hover effect to show the directory list */
     .directory-bar:hover .directory-list {
         opacity: 1;
         transform: scaleY(1);
     }
 
-    .directory-bar:hover {
-        height: auto;
-        width: 150px;
+    /* Adjust the width of the button on hover */
+    .directory-bar:hover .directory-circle {
         background-color: #444;
-        border-radius: 10px;
     }
-        
+
 
     .nav-links {
         list-style: none;
@@ -270,7 +285,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 80%;
         background-color: rgba(72, 72, 72, 0.7); /* Semi-transparent background */
         color: #ffffff;
         font-size: 11px;
@@ -282,14 +297,33 @@
         align-items: center;
         border-radius: 10px;
         z-index: 10;
+        pointer-events: none;
     }
+
+    /* The member name */
+    .member-name {
+        font-size: 18px;
+        color: #333;
+        cursor: pointer;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: inline-block;
+        margin-top: 30px;
+    }
+
+    /* Active state for showing the description */
+    .member-description.show {
+        opacity: 1; /* Make it visible */
+        pointer-events: auto; /* Allow interaction when shown */
+    }
+
 
     .group-member:hover .member-description {
         opacity: 1; /* Show the description on hover */
     }
 
     .group-member p {
-        margin-top: 10px;
+        margin-top: 5px;
         font-size: 1.2em;
     }
 
@@ -401,24 +435,23 @@
                     <div class="header-description" id="header-description">
                         <p>Unleash the Fun, Ignite the Interest, Games for kids, Love for world--From Little Games to Big Dreams</p>
                     </div>
-                        <a href="#mission" class="btn">Explore Now</a>
+                        <a href="#mission" class="btn">Introduction</a>
                     </div>
                 </div>
             </div>
 
-            <div class="directory-bar" onmouseover="expandDirectory()" onmouseout="collapseDirectory()">
-                <div class="directory-circle">
-                    <span>&#9776;</span>
+                <div class="directory-bar">
+                    <div class="directory-circle">
+                        Explore our games
+                    </div>
+                    <ul class="directory-list">
+                        <li><a href="index.html">Home<br>介绍</a></li>
+                        <li><a href="Puzzlegame.html">Puzzle Game<br>益智游戏</a></li>
+                        <li><a href="Treasuregame.html">Teasure Hunt Game<br>寻宝游戏</a></li>
+                        <li><a href="Racinggame.html">Racing Game<br>竞速游戏</a></li>
+                        <li><a href="Casualgame.html">Casual Game<br>休闲游戏</a></li>
+                    </ul>
                 </div>
-                <ul class="directory-list">
-                    <li><a href="Game page1.html">Intro<br>介绍</a></li>
-                    <li><a href="Puzzle game.html">Puzzle Game<br>益智游戏</a></li>
-                    <li><a href="Treasure game.html">Teasure Hunt Game<br>寻宝游戏</a></li>
-                    <li><a href="Racing game.html">Racing Game<br>竞速游戏</a></li>
-                    <li><a href="Casual game.html">Casual Game<br>休闲游戏</a></li>
-                </ul>
-            </div>
-        </div>
         </header>
     </label>
 
@@ -437,18 +470,18 @@
                 <div class="group-images">
                     <div class="group-member">
                         <img src="tp1.jpg" alt="Member 1">
-                        <div class="member-description" id="member-description">
+                        <div class="member-name" onclick="toggleDescription()">Abigail Shi</div>
+                        <div class="member-description">
                             <p>Abigail has been passionate about computer science since high school, especially with a strong interest in website development and networking. She loves children very much and often participates in community activities to help them, which also opens up her desire to help children's growth by designing healthy and meaningful games. She takes on the responsibility of being the team leader within the group, serving as the mastermind and creator of the entire project, providing innovative ideas and exceptional execution power to the team.</p>
                         </div>
-                        <p id="member-name">Abigail Shi</p>
                     </div>
+                   
                     <div class="group-member">
                         <img src="tp2.jpg" alt="Member 2">
-                        <div class="member-description" id="member-description">
+                        <div class="member-name" onclick="toggleDescription()">Ben Xu</div>
+                        <div class="member-description">
                             <p>In the past four years, Ben has accumulated rich programming experience. He also feels a strong burden for children with physical disabilities and understands that these children face significant challenges: limited physical accessibility often prevents them from fully enjoying games and lacking learning resources. This motivates him to become the founder and technical director of this project, using his strengths to design games and mathematics to create innovative, educational, and easy to understand games.</p>
                         </div>
-                        <p id="member2-name">Ben Xu</p>
-                    </div>
                 </div>
             </div>
         </section>
