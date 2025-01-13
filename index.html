@@ -103,8 +103,10 @@
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease;
-    z-index: 10;
+    z-index: 100;
+    overflow: visible;
 }
+
 
     /* Style for the button that shows the text */
     .directory-circle {
@@ -141,6 +143,7 @@
         left: 0;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 99;
     }
 
     /* Style for individual list items */
@@ -177,6 +180,13 @@
     .directory-bar:hover .directory-circle {
         background-color: #444;
     }
+
+    .directory-circle:focus + .directory-list,
+    .directory-bar:focus-within .directory-list {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+
 
 
     .nav-links {
@@ -392,23 +402,26 @@
     }
 
     @media (max-width: 768px) {
-        .group-images {
-            flex-direction: column;
-            align-items: center;
-        }
+    .directory-bar {
+        position: fixed; /* Fix position at top */
+        top: 10px;
+        right: 10px;
+        width: 100%; /* Full width on mobile */
+        height: auto;
+        z-index: 9999; /* Ensure it's above other elements */
+    }
 
-        .group-member {
-            width: 80%;
-        }
+    .directory-circle {
+        width: 100%; /* Button takes full width */
+        text-align: center;
+    }
 
-        .role {
-            margin: 20px 0;
-        }
-
-         .team-container {
-            flex-direction: column; /* Stack items vertically on smaller screens */
-        }
+    .directory-list {
+        top: 50px; /* Adjust the top placement for smaller screens */
+        width: 100%; /* Full width on mobile */
+    }
 }
+
 </style>
 
 <body>
