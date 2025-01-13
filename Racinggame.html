@@ -249,10 +249,12 @@
             display: flex;
             justify-content: center;
             align-items: center; /* Center text vertically and horizontally */
+            pointer-events: none;
         }
 
         .game-description.show {
             opacity: 1;
+            pointer-events: auto;
         }
 
         .game-image:hover .game-description {
