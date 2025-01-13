@@ -1,4 +1,4 @@
-<script>
+
     // Add event listener for the directory circle
     document.querySelector('.directory-circle').addEventListener('click', function(event) {
         const directoryList = document.querySelector('.directory-list');
@@ -15,4 +15,3 @@
         // Prevent default behavior to avoid scrolling when tapping
         event.preventDefault();
     });
-</script>
