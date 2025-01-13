@@ -1,26 +1,19 @@
-// Function to toggle the description on click (for mobile)
-function toggleDescription(event) {
-    // Prevent default behavior (if necessary)
-    event.preventDefault();
 
-    const description = event.target.nextElementSibling; // Get the description sibling
-    description.classList.toggle('show'); // Toggle the 'show' class for visibility
-}
+    document.addEventListener("DOMContentLoaded", function() {
+        const gameImages = document.querySelectorAll('.game-image');
 
-// Add hover effect (this works for desktop)
-document.querySelectorAll('.game').forEach(member => {
-    member.addEventListener('mouseenter', function() {
-        this.querySelector('.game-description').classList.add('show');
+        gameImages.forEach(image => {
+            image.addEventListener('mouseover', function() {
+                this.classList.add('active');
+            });
+
+            image.addEventListener('mouseout', function() {
+                this.classList.remove('active');
+            });
+
+            image.addEventListener('click', function() {
+                // Toggle active class on click for mobile devices
+                this.classList.toggle('active');
+            });
+        });
     });
-
-    member.addEventListener('mouseleave', function() {
-        this.querySelector('.game-description').classList.remove('show');
-    });
-});
-
-// Add click event for mobile (or when touch happens)
-document.querySelectorAll('.game-member img').forEach(img => {
-    img.addEventListener('click', function(event) {
-        toggleDescription(event); // Toggle description on click
-    });
-});
