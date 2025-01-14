@@ -4,10 +4,10 @@ const translations = {
       "Select Language:": "选择语言：",
       "Welcome to the world of Dream-Crafter Games": "欢迎来到梦想工匠游戏的世界",
       "Unleash the Fun, Ignite the Interest, Games for kids, Love for world--From Little Games to Big Dreams": "释放乐趣，点燃兴趣，为孩子们设计游戏，爱世界——从小小游戏到伟大梦想",
-      "Explore Now": "立即探索",
+      "Introduction": "介绍",
       "Our Mission": "我们的使命",
-      "Our mission is to inspire children's passion for gaming and programming by creating fun, engaging, and healthy gaming experiences. We eliminate addictive games but striving to design innovative games that not only entertain, but also educate and cultivate a greater interest in STEM, art, and even simply play. Recognizing the importance of inclusivity, we are committed to developing specialized games for children with disabilities, giving them the opportunity to embark on a fun gaming world.": 
-      "我们的使命是通过创建有趣、吸引人且健康的游戏体验，激发孩子们对游戏和编程的热情。我们杜绝令人上瘾的游戏，努力设计创新的游戏，这些游戏不仅具有娱乐性，还能教育和培养对STEM、艺术甚至简单游戏的兴趣。我们认识到包容性的重要性，致力于为残疾儿童开发专门的游戏，让他们有机会踏上有趣的游戏世界。",
+      "Our mission is to inspire children's passion for gaming and programming by creating fun, engaging, and healthy gaming experiences. We eliminate addictive games but striving to design innovative games that not only entertain, but also educate and cultivate a greater interest in exploring the function and codes behind the games. Recognizing the importance of inclusivity, we are committed to developing specialized games for children with disabilities, giving them the opportunity to embark on a fun gaming world.": 
+      "我们的使命是通过创造有趣、引人入胜和健康的游戏体验，激发孩子们对游戏和编程的热情。我们消除了令人上瘾的游戏，但努力设计创新的游戏，不仅娱乐，而且教育和培养人们对探索游戏背后的功能和代码的更大兴趣。认识到包容性的重要性，我们致力于为残疾儿童开发专门的游戏，让他们有机会进入一个有趣的游戏世界",
       "Meet Our Team": "认识我们的团队",
       "Abigail has been passionate about computer science since high school, especially with a strong interest in website development and networking. She loves children very much and often participates in community activities to help them, which also opens up her desire to help children's growth by designing healthy and meaningful games. She takes on the responsibility of being the team leader within the group, serving as the mastermind and creator of the entire project, providing innovative ideas and exceptional execution power to the team.":
       "Abigail从高中开始就对计算机科学充满热情，尤其是对网站开发和网络有着浓厚的兴趣。她非常爱孩子，经常参加社区活动来帮助他们，这也激发了她通过设计健康和有意义的游戏来帮助孩子成长的愿望。她承担着团队领导的责任，是整个项目的策划者和创造者，为团队提供创新的想法和卓越的执行力。",
@@ -37,10 +37,10 @@ const translations = {
       "选择语言：": "Select Language:",
       "欢迎来到梦想工匠游戏的世界": "Welcome to the world of Dream-Crafter Games",
       "释放乐趣，点燃兴趣，为孩子们设计游戏，爱世界——从小小游戏到伟大梦想": "Unleash the Fun, Ignite the Interest, Games for kids, Love for world--From Little Games to Big Dreams",
-      "立即探索": "Explore Now",
+      "介绍": "Introduction",
       "我们的使命": "Our Mission",
-      "我们的使命是通过创建有趣、吸引人且健康的游戏体验，激发孩子们对游戏和编程的热情。我们杜绝令人上瘾的游戏，努力设计创新的游戏，这些游戏不仅具有娱乐性，还能教育和培养对STEM、艺术甚至简单游戏的兴趣。我们认识到包容性的重要性，致力于为残疾儿童开发专门的游戏，让他们有机会踏上有趣的游戏世界。": 
-          "Our mission is to inspire children's passion for gaming and programming by creating fun, engaging, and healthy gaming experiences. We eliminate addictive games but striving to design innovative games that not only entertain, but also educate and cultivate a greater interest in STEM, art, and even simply play. Recognizing the importance of inclusivity, we are committed to developing specialized games for children with disabilities, giving them the opportunity to embark on a fun gaming world.",
+      "我们的使命是通过创造有趣、引人入胜和健康的游戏体验，激发孩子们对游戏和编程的热情。我们消除了令人上瘾的游戏，但努力设计创新的游戏，不仅娱乐，而且教育和培养人们对探索游戏背后的功能和代码的更大兴趣。认识到包容性的重要性，我们致力于为残疾儿童开发专门的游戏，让他们有机会进入一个有趣的游戏世界": 
+          "Our mission is to inspire children's passion for gaming and programming by creating fun, engaging, and healthy gaming experiences. We eliminate addictive games but striving to design innovative games that not only entertain, but also educate and cultivate a greater interest in exploring the function and codes behind the games. Recognizing the importance of inclusivity, we are committed to developing specialized games for children with disabilities, giving them the opportunity to embark on a fun gaming world.",
       "认识我们的团队": "Meet Our Team",
       "Abigail从高中开始就对计算机科学充满热情，尤其是对网站开发和网络有着浓厚的兴趣。她非常爱孩子，经常参加社区活动来帮助他们，这也激发了她通过设计健康和有意义的游戏来帮助孩子成长的愿望。她承担着团队领导的责任，是整个项目的策划者和创造者，为团队提供创新的想法和卓越的执行力。": 
           "Abigail has been passionate about computer science since high school, especially with a strong interest in website development and networking. She loves children very much and often participates in community activities to help them, which also opens up her desire to help children's growth by designing healthy and meaningful games. She takes on the responsibility of being the team leader within the group, serving as the mastermind and creator of the entire project, providing innovative ideas and exceptional execution power to the team.",
@@ -68,15 +68,17 @@ const translations = {
   }
   };
 
-// Function to switch the language
-function changeLanguage() {
-  const language = document.getElementById("language-select").value;
-  const elementsToTranslate = document.querySelectorAll("[id]");
+  // Function to change the language
+  function changeLanguage() {
+    const selectedLanguage = document.getElementById("language-select").value;
+    const elements = document.querySelectorAll("[id], .game-description, .game-link, h2, p, footer p, label, a");
 
-  elementsToTranslate.forEach(element => {
-      const translationKey = element.textContent.trim();
-      if (translations[language][translationKey]) {
-          element.textContent = translations[language][translationKey];
-      }
-  });
+    elements.forEach((element) => {
+        const originalText = element.innerText.trim();
+        if (translations[selectedLanguage] && translations[selectedLanguage][originalText]) {
+            element.innerText = translations[selectedLanguage][originalText];
+        } else if (translations.en[originalText]) {
+            element.innerText = translations.en[originalText];
+        }
+    });
 }
