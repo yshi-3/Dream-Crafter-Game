@@ -8,6 +8,7 @@
     <script src="casualtranslate.js" defer></script>
     <script src="Gamedescription.js" defer></script>
     <script src="directory.js" defer></script>
+    <script src="like.js" defer></script>
 
 </head>
 
@@ -290,6 +291,32 @@
             color: #163645;
         }
 
+        .like-section {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1em; 
+            color: #f3b035; 
+        }
+
+        .like-heart {
+            cursor: pointer;
+            transition: color 0.3s ease; 
+        }
+
+        .like-heart.liked {
+            color: red; 
+        }
+
+        .like-heart:not(.liked) {
+            color: #f3b035; 
+        }
+
+        .like-count {
+            color: #444;
+        }
+
 
         .social-links {
                 list-style-type: none;
@@ -373,8 +400,13 @@
                 <h2>The Fruit Killer</h2>
                 <a href="https://makecode.com/_CqLHC20hP7CK" class="game-link">Play Now</a>
                 <a href="https://makecode.com/_Ckv2zuDXJPcr" class="game-link">现在开始</a>
+                <div class="like-section">
+                    <span class="like-heart" id="like-heart-1">&#9825;</span>
+                    <span class="like-count" id="like-count-1">0 Likes</span>
+                </div>
             </div>
         </div>
+    
 
         <div class="game">
             <div class="game-item">
@@ -387,6 +419,10 @@
                 <h2>Be a Goose, Eat a Bomb</h2>
                 <a href="https://makecode.com/_7ieU9qg7JWfx" class="game-link">Play Now</a>
                 <a href="https://makecode.com/_8WVhgY7u7Tas" class="game-link">现在开始</a>
+                <div class="like-section">
+                    <span class="like-heart" id="like-heart-1">&#9825;</span>
+                    <span class="like-count" id="like-count-1">0 Likes</span>
+                </div>
             </div>
         </div>
 
