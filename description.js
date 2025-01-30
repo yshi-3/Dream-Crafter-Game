@@ -1,26 +1,29 @@
-// Function to toggle the description on click (for mobile)
-function toggleDescription(event) {
-    // Prevent default behavior (if necessary)
-    event.preventDefault();
+// Add this script before the closing </body> tag
+function toggleDescription() {
+    const description = button.nextElementSibling; // Get the description element
+    const isVisible = description.classList.contains('show');
 
-    const description = event.target.nextElementSibling; // Get the description sibling
-    description.classList.toggle('show'); // Toggle the 'show' class for visibility
+    // Close all other descriptions first
+    document.querySelectorAll('.member-description.show').forEach(desc => {
+        if (desc !== description) {
+            desc.classList.remove('show');
+        }
+    });
+
+    // Toggle the current description
+    description.classList.toggle('show');
+
+    // Scroll to the description if it's opened
+    if (description.classList.contains('show')) {
+        description.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 }
 
-// Add hover effect (this works for desktop)
-document.querySelectorAll('.group-member').forEach(member => {
-    member.addEventListener('mouseenter', function() {
-        this.querySelector('.member-description').classList.add('show');
-    });
-
-    member.addEventListener('mouseleave', function() {
-        this.querySelector('.member-description').classList.remove('show');
-    });
-});
-
-// Add click event for mobile (or when touch happens)
-document.querySelectorAll('.group-member img').forEach(img => {
-    img.addEventListener('click', function(event) {
-        toggleDescription(event); // Toggle description on click
-    });
+// Close description when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('member-name') && !e.target.closest('.member-description')) {
+        document.querySelectorAll('.member-description.show').forEach(desc => {
+            desc.classList.remove('show');
+        });
+    }
 });

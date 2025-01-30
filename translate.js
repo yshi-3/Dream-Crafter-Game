@@ -72,8 +72,8 @@ const translations = {
   }
   };
 
-  // Function to change the language
-  function changeLanguage() {
+
+  function selectLanguage() {
     const selectedLanguage = document.getElementById("language-select").value;
     const elements = document.querySelectorAll("[id], .game-description, .game-link, h2, p, footer p, label, a");
 
