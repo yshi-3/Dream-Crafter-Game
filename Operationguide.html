@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dream-Crafter Games - guidance</title>
     <script src="operationguide.js" defer></script>
+    <script src="operation.js" defer></script>
 </head>
 
 <style>
@@ -166,6 +167,17 @@
     .directory-bar:hover .directory-circle {
         background-color: #444;
     }
+
+@media (hover: hover) {
+    .directory-bar:hover .directory-circle {
+        background-color: #444;
+    }
+
+    .directory-bar:hover .directory-list {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
 
     .nav-links {
         list-style: none;
@@ -345,7 +357,7 @@
             </div>
 
             <div class="directory-bar">
-                <div class="directory-circle">
+                <div class="directory-circle" id="directory-circle">
                     Explore our games<br>探索游戏
                 </div>
                 <ul class="directory-list">
