@@ -22,6 +22,9 @@
 
     .header {
         position: relative;
+        background: linear-gradient(45deg, #f3b035, #ffc3a0);
+        background-size: 400% 400%;
+        animation: gradientAnimation 10s ease infinite;
         background-image: url('tp9.jpg');
         background-size: cover;
         background-position: center;
@@ -29,12 +32,26 @@
         color: #fff;
     }
 
+    @keyframes gradientAnimation {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
 
     .language-selection {
         position: absolute;
-        top: 40.5vh;
-        right: 3px;
+        top: 7px; /* 距离顶部 20px */
+        left: 10px; /* 距离左侧 20px */
         font-size: 0.8em;
+        z-index: 11;
+        color: #fff;
     }
 
     .language-selection select {
@@ -66,7 +83,7 @@
 
     .directory-bar {
         position: absolute;
-        top: 20px;
+        top: 10px;
         right: 20px;
         width: 200px; /* Adjust width to fit text */
         height: auto;
@@ -174,9 +191,23 @@
     }
 
     .header-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+        animation-delay: 0.5s;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
         .header-content p {
             font-size: 1.1rem;
@@ -201,7 +232,31 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUpRow 1s ease-out forwards;
+        }
+
+        .operation-row:nth-child(1) {
+            animation-delay: 1.2s;
+        }
+        .operation-row:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+        .operation-row:nth-child(3) {
+            animation-delay: 1.8s;
+        }
+
+        @keyframes fadeInUpRow {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .game-console iframe {
             position: relative;
@@ -309,12 +364,12 @@
               <h2>Selection Operation</h2>
               <div class="operation-row">
                 <div class="game-console">
-                    <br><iframe src="https://arcade.makecode.com/---run?id=_6p7XqdRy2VpA" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
+                    <br><iframe src="https://arcade.makecode.com/---run?id=_JMphtua2JEPJ" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
                     <!-- Embed English game console -->
 
                 <div class="game-console">
                   <!-- Embed Chinese game console -->
-                  <br><iframe src="https://arcade.makecode.com/---run?id=_MkFHm4YicA05" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
+                  <br><iframe src="https://arcade.makecode.com/---run?id=_Rcj5Tzfva61i" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
                 </div>
               </div>
               
@@ -323,10 +378,10 @@
               <div class="operation-row">
                 <div class="game-console">
                   <!-- Embed English game console -->
-                  <br><iframe src="https://arcade.makecode.com/---run?id=_6p7XqdRy2VpA" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
+                  <br><iframe src="https://arcade.makecode.com/---run?id=_PgCHFWHFvF9w" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
                 <div class="game-console">
                   <!-- Embed Chinese game console -->
-                  <br><iframe src="https://arcade.makecode.com/---run?id=_6p7XqdRy2VpA" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
+                  <br><iframe src="https://arcade.makecode.com/---run?id=_JhUMbP2x9MUP" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
                 </div>
               </div>
               

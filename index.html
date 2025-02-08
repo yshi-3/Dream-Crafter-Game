@@ -10,6 +10,7 @@
     <script src="interaction.js" defer></script>
     <script src="description.js" defer></script>
     <script src="directory.js" defer></script>
+    
 </head>
 
 <style>
@@ -35,6 +36,31 @@
         background-position: center;
         height: 100vh;
         color: #fff;
+        overflow: hidden;
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(77, 77, 77, 0.5); /* Grey color with transparency */
+        z-index: 1; /* Ensure the overlay is below the content */
+    }
+
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     
@@ -43,42 +69,45 @@
         top: 100.5vh;
         right: 3px;
         font-size: 0.8em;
+		z-index: 9999;
     }
 
     .language-select select {
         padding: 5px;
     }
 
-    .logo-container {
-        display: flex;
-        justify-content: right;
-        align-items: right;
-        }
-
-        /* Logo Styles */
-        .logo {
-            width: 150px; /* Set the logo size (adjust as needed) */
-            height: 150px; /* Ensure it’s a perfect circle */
-            border-radius: 50%; /* Make the logo circular */
-            object-fit: cover; /* Ensure the logo image maintains its aspect ratio */
-            border: 5px solid #f57c00; /* Optional: Add border around the logo for extra styling */
-        }
-
 
     .header-overlay {
-        position: absolute;
+        position: relative;
+        z-index: 2;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.4);
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         text-align: center;
         padding: 20px;
     }
+
+    /* Styling the header text */
+    .header-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-family: 'Roboto', sans-serif;
+        animation: fadeInUp 1.5s ease-out;
+    }
+
+    /* Header Description */
+    .header-description {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        animation: fadeInUp 1.5s ease-out 0.5s;
+    }
+
 
     /* Navbar */
     .navbar {
@@ -89,11 +118,6 @@
         max-width: 1200px;
     }
 
-    .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #fff;
-    }
 
     /* Style for the directory bar */
 .directory-bar {
@@ -233,35 +257,81 @@
         align-items: center;
     }
 
-    .header-content h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-    }
-
     .header-content p {
         font-size: 1.5rem;
         margin-bottom: 30px;
     }
 
     .btn {
-        padding: 10px 20px;
+        padding: 12px 30px;
         background-color: #f3b035;
-        color: #fff;
+        color: white;
         border: none;
-        border-radius: 20px;
+        border-radius: 30px;
+        font-size: 1.2rem;
         cursor: pointer;
-        text-decoration: none;
-        font-size: 1rem;
+        transition: background-color 0.3s ease;
     }
 
     .btn:hover {
-        background-color: #ffc3a0;
+        background-color: #ff9f1c;
     }
 
+    .btn:active {
+        transform: translateY(2px);
+    }
+
+
+
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for Button */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .header-description {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
     .section {
-        padding: 60px; 
+        background-color: #f9f3ee;
+        padding: 60px;
         text-align: center;
         align-items: center;
+        border-radius: 10px;
+        max-width: 1500px;
+        margin: 0 auto;
     }
 
     .section h2 {
@@ -286,17 +356,131 @@
         transform: translateY(0);
     }
 
+    /* Mission Section Container */
+    .mission-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        flex-wrap: wrap; /* Allow wrapping of elements on small screens */
+    }
+
+    /* Logo Styles */
+    .logo-container {
+        width: 200px; /* Keep fixed width for logo */
+        height: 200px; /* Keep fixed height for logo */
+        opacity: 0; /* Initially hidden */
+        transform: translateY(30px); /* Start below */
+        animation: logoAnimation 1.2s ease-out forwards;
+        margin-bottom: 10px; /* Space between logo and mission content */
+    }
+
+    .logo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure logo is not stretched */
+        border-radius: 50%; /* Make it circular */
+        border: 5px solid #f57c00;
+    }
+
+    /* Mission Content */
+    .mission-content {
+        max-width: 700px;
+        text-align: left;
+        opacity: 0; /* Initially hidden */
+        transform: translateX(30px); /* Start to the right */
+        animation: missionContentAnimation 1.2s ease-out 0.5s forwards; /* Delayed animation */
+    }
+
+    /* Mission Content Header */
+    .mission-content h2 {
+        font-size: 2rem;
+        color: #163645;
+        margin-bottom: 10px;
+    }
+
+    /* Mission Content Paragraph */
+    .mission-description p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #444;
+    }
+
+    /* Logo Animation */
+    @keyframes logoAnimation {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Mission Content Animation */
+    @keyframes missionContentAnimation {
+        0% {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Reveal Animation on Scroll */
+    .reveal {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .reveal.active {
+        opacity: 1;
+    }
+
+    /* Media Queries for Smaller Screens */
+    @media (max-width: 768px) {
+        .mission-container {
+            flex-direction: column; /* Stack the logo and mission content vertically */
+            align-items: center; /* Center align both elements */
+        }
+
+        /* Add spacing between the logo and content */
+        .logo-container {
+            margin-bottom: 20px; /* Space between logo and mission text */
+        }
+
+        .mission-content {
+            text-align: center; /* Center text for small screens */
+            max-width: 90%; /* Ensure it doesn't stretch too much */
+        }
+
+        .mission-content h2 {
+            font-size: 2rem; /* Adjust heading size for small screens */
+        }
+
+        .mission-description p {
+            font-size: 1rem; /* Adjust paragraph size for small screens */
+        }
+    }
+
+
     .group {
         background-color: #eae6e3; /* Off-white with pink hint */
         padding: 40px 0;
         text-align: center;
     }
 
+    /* Group Images Container */
     .group-images {
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 100px;
+        flex-wrap: wrap; /* Allow the images to wrap on small screens */
+        gap: 100px; /* Space between images */
     }
 
     .group-member {
@@ -324,10 +508,12 @@
         transition: transform 0.5s ease;
     }
 
+
     .eject-animation {
         opacity: 1 !important;
         transform: translateY(0) scale(1) !important;
         }
+
 
     /* Add bounce effect on hover */
     .group-member:hover {
@@ -340,59 +526,63 @@
     }
 
     .member-description {
-        opacity: 0; 
-        transition: opacity 0.3s ease-in-out; 
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 80%;
-        background-color: rgba(72, 72, 72, 0.7); 
-        color: #ffffff;
-        font-size: 11px;
-        text-align: center;
-        padding: 20px;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        z-index: 10;
-        pointer-events: none;
+            opacity: 0; 
+            transition: opacity 0.3s ease-in-out; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%;
+            background-color: rgba(72, 72, 72, 0.7); 
+            color: #ffffff;
+            font-size: 11px;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+    /* Show member description on hover */
+    .group-member:hover .member-description {
+        opacity: 1;
     }
 
-    
     .member-name {
         font-size: 18px;
-        color: #fff; 
+        color: #fff;
         cursor: pointer;
         font-weight: bold;
         margin-bottom: 10px;
         display: inline-block;
         margin-top: 30px;
-        text-decoration: none; 
-        background-color: #f3b035; 
-        padding: 10px 20px; 
-        border-radius: 25px; 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-        transition: all 0.3s ease; 
+        text-decoration: none;
+        background-color: #f3b035;
+        padding: 10px 20px;
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
     }
 
     .member-name:hover {
-        background-color: #ff9f1c; 
+        background-color: #ff9f1c;
         transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
     .member-name:active {
-        transform: translateY(0); 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        transform: translateY(0);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-        .member-description.show {
-            opacity: 1; 
-            pointer-events: auto;
-        }
+    .member-description.show {
+                opacity: 1; 
+                pointer-events: auto;
+            }
 
 
     .group-member:hover .member-description {
@@ -403,6 +593,35 @@
         margin-top: 5px;
         font-size: 1.2em;
     }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .group-images {
+        justify-content: center;
+        gap: 20px; /* Smaller gap on mobile */
+    }
+
+    .group-member {
+        width: 200px; /* Adjust width for small screens */
+        height: auto; /* Adjust height for small screens */
+    }
+
+    .group-member img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    }
+
+    .member-description {
+        font-size: 8px; /* Adjust this to a smaller font size on small screens */
+        padding: 15px; /* Reduce padding on small screens */
+    }
+
+    .member-name {
+        font-size: 16px; /* Adjust name size for smaller screens */
+        padding: 8px 15px; /* Adjust button padding */
+    }
+}
 
 
     .roles-container {
@@ -483,11 +702,6 @@
     
         <header class="header">
             <div class="header-overlay">
-                <nav class="navbar">
-                    <div class="logo-container">
-                        <img src="tp4.jpg" alt="Logo" class="logo">
-                    </div>
-                </nav>
                 <div class="header-content">
                     <h1 id="mission-title">Welcome to the world of Dream-Crafter Games</h1>
                     <div class="header-description" id="header-description">
@@ -512,14 +726,19 @@
                     </ul>
                 </div>
         </header>
-    </label>
 
         <section id="mission" class="section">
-            <h2 id="mission-title">Our Mission</h2>
+            <div class="mission-container">
+                <div class="logo-container">
+                    <img src="tp4.jpg" alt="Logo" class="logo">
+                </div>
+                <div class="mission-content">
+                <h2 id="mission-title">Our Mission</h2>
                 <div class="mission-description" id="mission-description">
                     <p>Our mission is to inspire children's passion for gaming and programming by creating fun, engaging, and healthy gaming experiences. We eliminate addictive games but striving to design innovative games that not only entertain, but also educate and cultivate a greater interest in exploring the function and codes behind the games. Recognizing the importance of inclusivity, we are committed to developing specialized games for children with disabilities, giving them the opportunity to embark on a fun gaming world.</p>
                 </div>
-                </div>
+            </div>
+        </div>
                 
         </section>
 

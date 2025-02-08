@@ -13,239 +13,286 @@
 
     <style>
         * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background-color: #f9f3ee;
+        color: #444;
+    }
+
+
+    header {
+        position: relative;
+        background-image: linear-gradient(rgba(108, 108, 108, 0.5), rgba(90, 90, 90, 0.5)), url('tp6.png'); 
+        background-size: cover;
+        background-position: center;
+        height: 75vh;
+        color: #fff;
+        overflow: hidden;
+        }
+
+    
+    .language-selection {
+        position: absolute;
+        top: 75.5vh;
+        right: 3px;
+        font-size: 0.8em;
+    }
+
+    .language-selection select {
+        padding: 3px;
+    }
+
+    .header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 80px;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    .directory-bar {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        width: 200px; /* Adjust width to fit text */
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    /* Style for the button that shows the text */
+    .directory-circle {
+        width: 200px; /* Adjust to match text width */
+        height: 50px;
+        background-color: #f3b035;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 10px;
+        text-align: center;
+        padding: 10px;
+        position: relative;
+    }
+
+    /* Style for the hidden directory list */
+    .directory-list {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-        }
+        list-style: none;
+        background-color: #eae6e3;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        width: 100%;
+        opacity: 0;  /* Initially hidden */
+        transform: scaleY(0); /* Initially collapsed */
+        transform-origin: top;
+        transition: all 0.3s ease;
+        position: absolute;
+        top: 60px; /* Place below the button */
+        left: 0;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        body {
-            background-color: #f9f3ee;
-            color: #444;
-        }
+    /* Style for individual list items */
+    .directory-list li {
+        padding: 10px;
+        border-bottom: 1px solid #555;
+    }
 
+    /* Style for the last list item to remove border */
+    .directory-list li:last-child {
+        border-bottom: none;
+    }
 
-        .header {
-            position: relative;
-            background-image: url('tp6.png'); /* Replace with your JPG file */
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
-            color: #fff;
-        }
+    /* Style for links */
+    .directory-list a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        display: block;
+        width: 100%;
+    }
 
-        
-        .language-selection {
-            position: absolute;
-            top: 70.5vh;
-            right: 3px;
-            font-size: 0.8em;
-        }
+    /* Hover effect for links */
+    .directory-list a:hover {
+        color: #ddd;
+    }
 
-        .language-selection select {
-            padding: 3px;
-        }
+    /* Hover effect to show the directory list */
+    .directory-bar:hover .directory-list {
+        opacity: 1;
+        transform: scaleY(1);
+    }
 
-        .header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
-            padding: 80px;
-        }
+    /* Adjust the width of the button on hover */
+    .directory-bar:hover .directory-circle {
+        background-color: #444;
+    }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-        }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+    }
 
-        .directory-bar {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 200px; /* Adjust width to fit text */
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
+    .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+    }
 
-        /* Style for the button that shows the text */
-        .directory-circle {
-            width: 200px; /* Adjust to match text width */
-            height: 50px;
-            background-color: #f3b035;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 10px;
-            text-align: center;
-            padding: 10px;
-            position: relative;
-        }
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
 
-        /* Style for the hidden directory list */
-        .directory-list {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            background-color: #eae6e3;
-            color: rgb(0, 0, 0);
-            text-align: center;
-            width: 100%;
-            opacity: 0;  /* Initially hidden */
-            transform: scaleY(0); /* Initially collapsed */
-            transform-origin: top;
-            transition: all 0.3s ease;
-            position: absolute;
-            top: 60px; /* Place below the button */
-            left: 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .header-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 1s ease-in-out forwards;
+        opacity: 0;
+    }
 
-        /* Style for individual list items */
-        .directory-list li {
-            padding: 10px;
-            border-bottom: 1px solid #555;
-        }
-
-        /* Style for the last list item to remove border */
-        .directory-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* Style for links */
-        .directory-list a {
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            display: block;
-            width: 100%;
-        }
-
-        /* Hover effect for links */
-        .directory-list a:hover {
-            color: #ddd;
-        }
-
-        /* Hover effect to show the directory list */
-        .directory-bar:hover .directory-list {
+    @keyframes fadeIn {
+        to {
             opacity: 1;
-            transform: scaleY(1);
         }
+    }
 
-        /* Adjust the width of the button on hover */
-        .directory-bar:hover .directory-circle {
-            background-color: #444;
+    .header-content h1 {
+        font-size: 2.5rem; 
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: scaleIn 1s ease-in-out forwards;
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    @keyframes scaleIn {
+        to {
+            transform: scale(1);
+            opacity: 1;
         }
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 15px;
+    .header-content p {
+        font-size: 1.2rem; 
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        animation: slideIn 1s ease-in-out forwards;
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    @keyframes slideIn {
+        to {
+            transform: translateY(0);
+            opacity: 1;
         }
+    }
 
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
+    .btn {
+        padding: 5px 15px; 
+        background-color: #f3b035;
+        color: #fff;
+        border: none;
+        border-radius: 20px; 
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1rem; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #ffc3a0;
+        transform: translateY(-3px);
+    }
+
+
+    .section {
+        padding: 60px; 
+        text-align: center;
+        align-items: center;
+    }
+
+
+    /* Game Grid */
+    .game-container {
+        background-color: #eae6e3;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+
+    .game {
+        background-color: #fff;
+        border-radius: 8px;
+        margin: 40px 0;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.5s ease;
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+        animation: eject 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @keyframes eject {
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
+    }
+    
 
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
+    .game-item {
+        position: relative; /* Ensure positioning for hover effect */
+    }
 
-        .header-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    .game-image {
+        position: relative; /* Required for absolute positioning of the description */
+        display: flex;
+        width: 100%;
+        height: 180px;
+        border: 1px solid #eae6e3;
+        border-radius: 4px;
+        overflow: hidden; /* Ensures the description stays within the image boundaries */
+    }
 
-        .header-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
-
-        .header-content p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            padding: 10px 15px;
-            background-color: #f3b035;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background-color: #ffc3a0;
-        }
-
-        .section {
-            padding: 60px; 
-            text-align: center;
-            align-items: center;
-        }
-
-
-        /* Game Grid */
-        .game-container {
-            background-color: #eae6e3;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-
-        .game {
-            background-color: #fff;
-            border-radius: 8px;
-            margin: 40px 0;
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .game-item {
-            position: relative; /* Ensure positioning for hover effect */
-        }
-
-        .game-image {
-            position: relative; /* Required for absolute positioning of the description */
-            display: flex;
-            width: 100%;
-            height: 180px;
-            border: 1px solid #eae6e3;
-            border-radius: 4px;
-            overflow: hidden; /* Ensures the description stays within the image boundaries */
-        }
-
-        .game-description {
+    
+    .game-description {
             opacity: 0; /* Hidden by default */
             transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
             position: absolute;
@@ -272,69 +319,99 @@
             pointer-events: auto;
         }
 
+    .game-image:hover .game-description {
+        opacity: 1; /* Show the description on hover */
+    }
 
-        .game-image:hover .game-description {
-            opacity: 1; /* Show the description on hover */
+
+    .game-link {
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 8px;
+        background-color: #f3b035;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        text-align: center;
+        cursor: pointer;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+    }
+
+    .game-link:hover {
+        background-color: #e09f2a;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-2px);
+        -moz-transform: translateY(-2px);
+        -ms-transform: translateY(-2px);
+        -o-transform: translateY(-2px);
+    }
+
+
+    .game-link:active {
+        background-color: #c78a23;
+        transform: translateY(1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        -webkit-transform: translateY(1px);
+        -moz-transform: translateY(1px);
+        -ms-transform: translateY(1px);
+        -o-transform: translateY(1px);
+    }
+
+    .game:hover {
+        transform: translateY(-5px);
+    }
+
+    .game h3 {
+        color: #163645;
+        font-size: 1.5em;
+        padding: 5px;
+    }
+
+    .game p {
+        font-size: 1em;
+        color: #163645;
+    }
+
+
+    .social-links {
+            list-style-type: none;
+            margin-top: 20px;
         }
 
+        .social-links li {
+            margin-bottom: 10px;
+        }
 
-        .game-link {
-            display: block;
-            margin: 10px 0;
-            font-size: 14px;
-            color: #f3b035;
+        .social-links a {
+            color: #306692;
             text-decoration: none;
+            font-weight: bold;
         }
 
-        .game-link:hover {
+        .social-links a:hover {
             text-decoration: underline;
         }
 
-        .game:hover {
-            transform: translateY(-5px);
-        }
 
-        .game h3 {
-            color: #163645;
-            font-size: 1.5em;
-            padding: 5px;
-        }
+    footer {
+        background-color: #486876;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
 
-        .game p {
-            font-size: 1em;
-            color: #163645;
-        }
-
-        .social-links {
-                list-style-type: none;
-                margin-top: 20px;
-            }
-
-            .social-links li {
-                margin-bottom: 10px;
-            }
-
-            .social-links a {
-                color: #306692;
-                text-decoration: none;
-                font-weight: bold;
-            }
-
-            .social-links a:hover {
-                text-decoration: underline;
-            }
-
-
-        footer {
-            background-color: #486876;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 1em;
-        }
+    footer p {
+        font-size: 1em;
+    }
 
     </style>
 </head>

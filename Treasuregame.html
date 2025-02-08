@@ -12,7 +12,7 @@
 </head>
 
     <style>
-        * {
+       * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,19 +25,20 @@
     }
 
 
-    .header {
+    header {
         position: relative;
-        background-image: url('tp5.png'); /* Replace with your JPG file */
+        background-image: linear-gradient(rgba(108, 108, 108, 0.5), rgba(90, 90, 90, 0.5)), url('tp5.png'); 
         background-size: cover;
         background-position: center;
-        height: 70vh;
+        height: 75vh;
         color: #fff;
-    }
+        overflow: hidden;
+        }
 
     
     .language-selection {
         position: absolute;
-        top: 70.5vh;
+        top: 75.5vh;
         right: 3px;
         font-size: 0.8em;
     }
@@ -71,7 +72,7 @@
 
     .directory-bar {
         position: absolute;
-        top: 20px;
+        top: 10px;
         right: 20px;
         width: 200px; /* Adjust width to fit text */
         height: auto;
@@ -176,32 +177,66 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        animation: fadeIn 1s ease-in-out forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
     }
 
     .header-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
+        font-size: 2.2rem; 
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: scaleIn 1s ease-in-out forwards;
+        transform: scale(0.8);
+        opacity: 0;
+    }
 
-        .header-content p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+    @keyframes scaleIn {
+        to {
+            transform: scale(1);
+            opacity: 1;
         }
-    
-        .btn {
-            padding: 10px 15px;
-            background-color: #f3b035;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 1rem;
-        }
+    }
 
-        .btn:hover {
-            background-color: #ffc3a0;
+    .header-content p {
+        font-size: 1.2rem; 
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        animation: slideIn 1s ease-in-out forwards;
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    @keyframes slideIn {
+        to {
+            transform: translateY(0);
+            opacity: 1;
         }
+    }
+
+    .btn {
+        padding: 5px 15px; 
+        background-color: #f3b035;
+        color: #fff;
+        border: none;
+        border-radius: 20px; 
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 1rem; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #ffc3a0;
+        transform: translateY(-3px);
+    }
+
 
     .section {
         padding: 60px; 
@@ -228,8 +263,19 @@
         max-width: 300px;
         text-align: center;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
+        transition: transform 0.5s ease;
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+        animation: eject 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
+
+    @keyframes eject {
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    
 
     .game-item {
         position: relative; /* Ensure positioning for hover effect */
@@ -245,6 +291,7 @@
         overflow: hidden; /* Ensures the description stays within the image boundaries */
     }
 
+    
     .game-description {
             opacity: 0; /* Hidden by default */
             transition: opacity 0.3s ease-in-out; /* Smooth fade effect */
@@ -278,15 +325,45 @@
 
 
     .game-link {
-        display: block;
-        margin: 10px 0;
-        font-size: 14px;
-        color: #f3b035;
+        display: inline-block;
+        padding: 12px 24px;
+        margin: 8px;
+        background-color: #f3b035;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
         text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        text-align: center;
+        cursor: pointer;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
     }
 
     .game-link:hover {
-        text-decoration: underline;
+        background-color: #e09f2a;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        -webkit-transform: translateY(-2px);
+        -moz-transform: translateY(-2px);
+        -ms-transform: translateY(-2px);
+        -o-transform: translateY(-2px);
+    }
+
+
+    .game-link:active {
+        background-color: #c78a23;
+        transform: translateY(1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        -webkit-transform: translateY(1px);
+        -moz-transform: translateY(1px);
+        -ms-transform: translateY(1px);
+        -o-transform: translateY(1px);
     }
 
     .game:hover {
@@ -335,6 +412,8 @@
     footer p {
         font-size: 1em;
     }
+
+
 
     </style>
 </head>
