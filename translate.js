@@ -3,7 +3,9 @@ const translations = {
   zh: {
       "Select Language:": "选择语言：",
       "Welcome to the world of Dream-Crafter Games": "欢迎来到梦想工匠游戏的世界",
+      "Challenge Game Released! Difficulty level up, pass or die, you can choose for yourself, come and try it out!":"挑战游戏发布！难度升级，通关还是死亡，你自己决定，来试试吧！",
       "Unleash the Fun, Ignite the Interest, Games for kids, Love for world--From Little Games to Big Dreams": "释放乐趣，点燃兴趣，为孩子们设计游戏，爱世界——从小小游戏到伟大梦想",
+      "Version update! Now you can directly type and input information through keyboard of your phone and computer!":"版本更新！现在，您可以通过在手机和电脑的键盘上打字来直接键入和输入信息！",
       "Introduction": "介绍",
       "Our Mission": "我们的使命",
       "Our mission is to inspire children's passion for gaming and programming by creating fun, engaging, and healthy gaming experiences. We eliminate addictive games but striving to design innovative games that not only entertain, but also educate and cultivate a greater interest in exploring the function and codes behind the games. Recognizing the importance of inclusivity, we are committed to developing specialized games for children with disabilities, giving them the opportunity to embark on a fun gaming world.": 
@@ -39,6 +41,8 @@ const translations = {
       "选择语言：": "Select Language:",
       "欢迎来到梦想工匠游戏的世界": "Welcome to the world of Dream-Crafter Games",
       "释放乐趣，点燃兴趣，为孩子们设计游戏，爱世界——从小小游戏到伟大梦想": "Unleash the Fun, Ignite the Interest, Games for kids, Love for world--From Little Games to Big Dreams",
+      "挑战游戏发布！难度升级，通关还是死亡，你自己决定，来试试吧！":"Challenge Game Released! Difficulty level up, pass or die, you can choose for yourself, come and try it out!",
+      "版本更新！现在，您可以通过在手机和电脑的键盘上打字来直接键入和输入信息！":"Version update! Now you can directly type and input information through keyboard of your phone and computer!",
       "介绍": "Introduction",
       "我们的使命": "Our Mission",
       "我们的使命是通过创造有趣、引人入胜和健康的游戏体验，激发孩子们对游戏和编程的热情。我们消除了令人上瘾的游戏，但努力设计创新的游戏，不仅娱乐，而且教育和培养人们对探索游戏背后的功能和代码的更大兴趣。认识到包容性的重要性，我们致力于为残疾儿童开发专门的游戏，让他们有机会进入一个有趣的游戏世界": 
